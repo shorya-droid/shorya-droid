@@ -1,8 +1,9 @@
 name: Run Colab Notebook Daily
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '40 12 * * *'  # Runs daily at 5:30 PM IST time
+    - cron: '00 13 * * *'  # Runs daily at 5:30 PM IST time
 
 jobs:
   run_colab:
@@ -24,4 +25,3 @@ jobs:
         uses: jupyter/nbconvert-action@v2
         with:
           notebook_file: /content/drive/MyDrive/Colab Notebooks/Beacon_FB_Analysis_Final.ipynb
-
