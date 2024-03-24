@@ -1,0 +1,27 @@
+name: Run Colab Notebook Daily
+
+on:
+  schedule:
+    - cron: '0 17 * * *'  # Runs daily at 8 PM UTC time
+
+jobs:
+  run_colab:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt  # Adjust as needed
+
+      - name: Run Colab Notebook
+        uses: jupyter/nbconvert-action@v2
+        with:
+          notebook_file: /content/drive/MyDrive/Colab Notebooks/Beacon_FB_Analysis_Final.ipynb
+
